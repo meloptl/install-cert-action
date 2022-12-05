@@ -14,6 +14,7 @@ runs:
         sudo update-ca-certificates
       shell: bash
     - name: Add certificate on current Java JVM
+      if: ${{ inputs.java_keystore_path != '' }}
       run: |
         sudo keytool -importcert -file ${{ github.action_path }}/cert/gts-ca-1c3.crt -keystore ${{ inputs.java_keystore_path }}/lib/security/cacerts -keypass changeit -storepass changeit -noprompt -alias GoogleCA
       shell: bash
