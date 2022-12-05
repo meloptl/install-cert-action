@@ -15,5 +15,5 @@ runs:
       shell: bash
     - name: Add certificate on current Java JVM
       run: |
-        sudo keytool -importcert -file ./cert/gts-ca-1c3.crt -keystore ${{ java_keystore_path }}/lib/security/cacerts -keypass changeit -storepass changeit -noprompt -alias GoogleCA
+        sudo keytool -importcert -file ./cert/gts-ca-1c3.crt -keystore ${{ inputs.java_keystore_path }}/lib/security/cacerts -keypass changeit -storepass changeit -noprompt -alias GoogleCA
       shell: bash
