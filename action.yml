@@ -1,7 +1,7 @@
 name: 'Install Certificate'
 description: 'Install a custom certificate for Linux & Java'
 inputs:
-  java_keystore_path:
+  java-keystore-path:
     description: 'path to enable certificate installation for current JVM'
     required: true
 
@@ -14,7 +14,7 @@ runs:
         sudo update-ca-certificates
       shell: bash
     - name: Add certificate on current Java JVM
-      if: ${{ inputs.java_keystore_path != '' }}
+      if: ${{ inputs.java-keystore-path != '' }}
       run: |
-        sudo keytool -importcert -file ${{ github.action_path }}/cert/gts-ca-1c3.crt -keystore ${{ inputs.java_keystore_path }}/lib/security/cacerts -keypass changeit -storepass changeit -noprompt -alias GoogleCA
+        sudo keytool -importcert -file ${{ github.action_path }}/cert/gts-ca-1c3.crt -keystore ${{ inputs.java-keystore-path }}/lib/security/cacerts -keypass changeit -storepass changeit -noprompt -alias GoogleCA
       shell: bash
